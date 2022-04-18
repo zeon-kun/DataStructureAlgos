@@ -51,7 +51,7 @@ int getMaxPrime(int n){
 }
 
 int getHashKey2(int key){
-    return getMaxPrime(key) - (key - getMaxPrime(key));
+    return getMaxPrime(MAX_SIZE) - (key % getMaxPrime(MAX_SIZE));
 }
 int getHashKey(int key){
     return key % MAX_SIZE;
@@ -79,7 +79,7 @@ void insertObject(int key, int data){
     hashtable[index].data = data;
     hashtable[index].key = key;
     size++;
-    printf("\n Key (%d) masuk \n", key);
+    printf("\n Key (%d) masuk di Index (%d)\n", key, index);
 }
 
 void removeObjectData(int key){
@@ -125,12 +125,9 @@ int main(){
     insertObject(4,5);
     insertObject(5,6);
     insertObject(6,7);
-    insertObject(7,8);
-    insertObject(8,9);
-    insertObject(9,0);   
+    insertObject(7,8);  
     printHash();
     removeObjectData(10);
-    removeObjectData(9);
     removeObjectData(11);
     printHash();
 }
